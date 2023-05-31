@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tutor Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .title-bar {
+      background-color: #333333;
+      color: #ffffff;
+      padding: 16px;
+    }
+
+    .title-bar h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      animation: slide-up 0.5s ease-in-out;
+    }
+
+    @keyframes slide-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-card {
+      width: 400px;
+      margin: 16px;
+      padding: 24px;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #f9fafb;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-card h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .profile-card button {
+      padding: 4px 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title-bar">
+    <a href="index.html"><h1>Mike Kim Tutorial</h1></a> 
+  </div>
+
+  <div class="profile-container bg-gradient-to-r from-green-500 via-yellow-500 to-red-500">
+    <input type="text" id="search-input" class="my-4 px-4 py-2 rounded-lg" placeholder="Search by name">
+    <div id="profile-list">
+      <div class="profile-card">
+        <h2 class="text-gray-800">Sheng Dapeng</h2>
+        <b>Academic Qualifications</b>
+        <ul>
+          <li>IGCSE Additional mathematics A*</li>
+          <li>IGCSE Extended mathematics A*</li>
+          <li>Mathematics Analysis and approach HL: 7</li>
+          <li>IGCSE Physics A*</li>
+          <li>IGCSE EFL A* &amp; IB English A language and literature 6</li>
+        </ul>
+      </div>
+      <div class="profile-card">
+        <h2 class="text-gray-800">Geonu Kim</h2>
+        <b>Academic Qualifications</b>
+        <ul>
+          <li>IGCSE chemistry A</li>
+          <li>IB chemistry 7 (with final exam)</li>
+          <li>Excellence award in Chemistry (IB)</li>
+          <li>Extended essay in chemistry (A)</li>
+          <li>IB biology. 7 (with final exam)</li>
+          <li>English language and literature (predicted 7 and final 6)</li>
+        </ul>
+        <b>Teaching Qualifications</b>
+        <ul>
+          <li>Various teaching experience in IB biology</li>
+        </ul>
+      </div>
+      <div class="profile-card">
+        <h2 class="text-gray-800">Darren Chua</h2>
+        <b>Academic Qualifications</b>
+        <ul>
+          <li>Asian Pacific Mathematics Olympiad Silver Medalist</li>
+          <li>International Junior Math Olympiad Lone Perfect Scorer</li>
+          <li>Iranian Combinatorics Olympiad Advanced Category Champion</li>
+          <li>Caltech Harvey Mudd Math Competition 1st Place in the Philippines</li>
+          <li>VANDA International Science Olympiad Gold Medalist</li>
+          <li>Philippines Mathematical Olympiad National Finalist</li>
+          <li>UP Math&Science Competition Overall Champion</li>
+          <li>DLSU Math&Science Competition Overall Champion</li>
+          <li>Purple Comet Champion Team in the Philippines</li>
+        </ul>
+        <b>Teaching Qualifications</b>
+        <ul>
+          <li>Privately tutored secondary and university students (2019-2022)</li>
+          <li>Founded social organization to teach secondary students (2020-2022)</li>
+          <li>Taught primary students in nonprofit organization (2016-2019)</li>
+        </ul>
+      </div>
+      <div class="profile-card">
+        <h2 class="text-gray-800">Jason Ong</h2>
+        <b>Academic Qualifications</b>
+        <ul>
+          <li>A Levels Mathematics A</li>
+          <li>A Levels Chemistry A</li>
+          <li>A Levels Economics A</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const profileList = document.getElementById('profile-list');
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const profiles = Array.from(profileList.getElementsByClassName('profile-card'));
+
+      profiles.forEach((profile) => {
+        const name = profile.querySelector('h2').textContent.toLowerCase();
+        if (name.includes(searchTerm)) {
+          profile.style.display = 'block';
+        } else {
+          profile.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
